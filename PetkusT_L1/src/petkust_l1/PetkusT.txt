@@ -1,0 +1,14 @@
+string_laukas   int_laukas  double_laukas
+testas1         1           1.1
+testas2         2           2.2
+testas3         3           3.3
+testas4         4           4.4
+testas5         5           5.5
+testas6         6           6.6
+testas7         7           7.7
+testas8         8           8.8
+testas9         9           9.9
+testas10        10          10.0
+testas11        11          11.1
+testas12        12          12.2
+testas13        13          13.3
