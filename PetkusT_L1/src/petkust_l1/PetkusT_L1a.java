@@ -5,6 +5,7 @@ public class PetkusT_L1a {
     private int int_field;
     private double double_field;
     
+    //Sukuriama duomenis saugojančioji klasė
     PetkusT_L1a(String C_string_field, int C_int_field, double C_double_field){
         string_field = C_string_field;
         int_field = C_int_field;

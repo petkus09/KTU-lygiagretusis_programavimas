@@ -12,3 +12,28 @@ testas10        10          10.0
 testas11        11          11.1
 testas12        12          12.2
 testas13        13          13.3
+testas14        14          14.4
+testas15        15          15.5
+testas16        16          16.6
+testas17        17          17.7
+testas18        18          18.8
+testas19        19          19.9
+testas20        20          20.0
+testas21        21          21.1
+testas22        22          22.2
+testas23        23          23.3
+testas24        24          24.4
+testas25        25          25.5
+testas26        26          26.6
+testas27        27          27.7
+testas28        28          28.8
+testas29        29          29.9
+testas30        30          30.0
+testas31        31          31.1
+testas32        32          32.2
+testas33        33          33.3
+testas34        34          34.4
+testas35        35          35.5
+testas36        36          36.6
+
+

@@ -21,9 +21,12 @@ public class PetkusT_L1 {
     public static void main(String[] args) throws IOException {
         String file_name = "PetkusT.txt";
         int process_count = 0;
+        int array_size = 0;
         System.out.print("Iveskite giju skaiciu: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         process_count =  Integer.parseInt(br.readLine());
-        PetkusT_L1_b.execute(file_name, process_count);
+        System.out.print("Iveskite masyvo dydį: ");
+        array_size =  Integer.parseInt(br.readLine());
+        PetkusT_L1_b.execute(file_name, process_count, array_size);
     }
 }
