@@ -35,3 +35,17 @@ testas33        33          33.3
 testas34        34          34.4
 testas35        35          35.5
 testas36        36          36.6
+testas37        37          37.7
+testas38        38          38.8
+testas39        39          39.9
+testas40        40          40.0
+testas41        41          41.1
+testas42        42          42.2
+testas43        43          43.3
+testas44        44          44.4
+testas45        45          45.5
+testas46        46          46.6
+testas47        47          47.7
+testas48        48          48.8
+testas49        49          49.9
+testas50        50          50.0
