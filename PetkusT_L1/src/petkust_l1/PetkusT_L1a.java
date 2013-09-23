@@ -1,5 +1,5 @@
 /* Kure Tautvydas Petkus IFF-1
- * L1 - Gijos java kalboje
+ * L1 - Gijos su OpenMP
  * Duomenu failas - PetkusT.txt (duomenu eiluciu skaicius - 50)
  * Giju ir masyvu dydziai priklauso nuo ivedimo
  */
@@ -54,9 +54,9 @@ class PetkusT_L1a_Veiksmai {
         for (int i = 0; i < process_count; i++){
             petkus_threads[i].start();
         }
-        
+
     }
-    
+
     //Nuskaitomi pradiniai duomenys. Saugomi dvimačiame masyve
     public static void readData(String file_name, PetkusT_L1a_Duomenys[][] file_data, int process_count, int[] array_size){
          try {
@@ -83,7 +83,7 @@ class PetkusT_L1a_Veiksmai {
         } catch (IOException e) {
         }
     }
-    
+
     //Išvedami pradiniai duomenys
     public static void writeData(PetkusT_L1a_Duomenys[][] file_data, int process_count, int[] array_size){
         for (int i = 0; i < process_count; i++){
@@ -101,7 +101,7 @@ class PetkusT_L1a_Duomenys {
     private String string_field;
     private int int_field;
     private double double_field;
-    
+
     //Sukuriama duomenis saugojančioji klasė
     PetkusT_L1a_Duomenys(String C_string_field, int C_int_field, double C_double_field){
         string_field = C_string_field;
@@ -126,7 +126,7 @@ class PetkusT_L1a_Duomenys {
     public double getDouble_field() {
         return double_field;
     }
-    
+
     public void setString_field(String string_field) {
         this.string_field = string_field;
     }
@@ -138,7 +138,7 @@ class PetkusT_L1a_Duomenys {
     public void setDouble_field(double double_field) {
         this.double_field = double_field;
     }
-    
+
 }
 
 //Gijos klase
@@ -146,7 +146,7 @@ class PetkusT_L1a_gija extends Thread {
     private PetkusT_L1a_Duomenys[] file_data;
     private int array_size;
     private int thread_index;
-    
+
     //Sukuriami gijos duomenys naudojami spausdinimui
     PetkusT_L1a_gija(PetkusT_L1a_Duomenys[] C_file_data, int C_array_size, int C_thread_index){
         file_data = C_file_data;
