@@ -1,8 +1,16 @@
+//IFF-1 Tautvydas Petkus
+// L1b - OpenMP
+//Failo dydis - 50 eiluciu
+//Dabartiniai nustatymai: giju sk: 8, maximalus masyvo dydis - 10, didziausias char buferio dydis - 80
+//Kiek  iteracijų iš eilės padaro vienas procesas? vieną pilnai
+//Kokia tvarka vykdomi procesai? atsitiktine
+//
+
 #include <omp.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <math.h>
 
 #define MAX_STRING_LEN 80
 #define MAX_THREADS 8
@@ -55,13 +63,13 @@ main(int argc, char **argv) {
     int d = 0;
     int ii = 0;
     int j = 0;
-    printf("**********************\n");
+    printf("********************************************************************\n");
     printf("***Pradiniai duomenys***\n");
     printf("%10s %10s %10s %10s %10s\n", "Gijos nr.", "Eil.Nr.", "String", "int", "double");
     struct ThreadData duomenys_gijoms[MAX_THREADS];
     for (ii = 0; ii < MAX_THREADS; ii++){
         printf("***Gija nr. %d***\n", ii);
-        struct Data D_gija[array_size[i]];
+        struct Data D_gija[array_size[ii]];
         for (j = 0; j < array_size[ii]; j++){
             D_gija[j] = duomenys[d];
             printf("%10d %10d %10s %10d %10lf\n", ii, j, D_gija[j].text_var, D_gija[j].int_var, D_gija[j].double_var);
@@ -72,19 +80,13 @@ main(int argc, char **argv) {
             duomenys_gijoms[ii].thread_struct_array[j] = D_gija[j];
         }
     }
-
-    double start = omp_get_wtime();
     printf("\n**********************\n");
-    int procSk = omp_get_num_procs();
     //int maxGijuSk = omp_get_max_threads();
     int maxGijuSk = MAX_THREADS;
     int gijosNr = omp_get_thread_num();
-    int gijuSk = omp_get_num_threads();
     omp_set_num_threads(maxGijuSk);
-    printf("Procesoriu sk. = %d\n", procSk);
     printf("Max giju sk. = %d\n", maxGijuSk);
-    printf("Dirba %d gija, bendras giju sk. = %d\n" , gijosNr, gijuSk);
-    printf("---------------------------------\n");
+    printf("---------------------------------------------------------------------------------\n");
     // ------ Lygiagretus kodas ------------.
 
     printf("***Lygiagrecioji programos dalis***\n");
@@ -92,11 +94,16 @@ main(int argc, char **argv) {
     #pragma omp parallel private(gijosNr)
     {
         gijosNr = omp_get_thread_num();
+        int j = 0;
         for (j = 0; j < array_size[gijosNr]; j++){
             printf("%10d %10d %10s %10d %10lf\n", gijosNr, j, duomenys_gijoms[gijosNr].thread_struct_array[j].text_var, duomenys_gijoms[gijosNr].thread_struct_array[j].int_var, duomenys_gijoms[gijosNr].thread_struct_array[j].double_var);
+            int ii = 0;
+            //funkcija, reikalinga pristabdyti giju veikima ir pastebeti maisos rezultatus
+            for (ii = 0; ii < 10000; ii++){
+                double bandomasis = ii * ii * ii * ii;
+            }
         }
         printf("***Gija nr. %d baige darba \n", gijosNr);
-
     }
     // ------ Nuoseklus kodas --------------
     printf("-------------------------------\n");
