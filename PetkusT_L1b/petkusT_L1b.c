@@ -2,7 +2,7 @@
 // L1b - OpenMP
 //Failo dydis - 50 eiluciu
 //Dabartiniai nustatymai: giju sk: 8, maximalus masyvo dydis - 10, didziausias char buferio dydis - 80
-//Kiek  iteracijų iš eilės padaro vienas procesas? vieną pilnai
+//Kiek  iteracijų iš eilės padaro vienas procesas? atsitiktinai
 //Kokia tvarka vykdomi procesai? atsitiktine
 //
 
@@ -29,6 +29,7 @@ struct ThreadData{
 };
 
 main(int argc, char **argv) {
+    //Nustatoma, kiek kiekviena gija tures masyvo elementu
     int array_size[MAX_THREADS] = {5, 7, 6, 9, 4, 8, 4, 6};
     struct Data duomenys[MAX_FILE_ROW];
 
@@ -59,20 +60,20 @@ main(int argc, char **argv) {
            i = i + 1;
        }
 
-    //Duomenu priskyrimas giju masyvams
+    //Duomenu priskyrimas giju masyvams. Pradiniu duomenu isvedimas
     int d = 0;
     int ii = 0;
     int j = 0;
     printf("********************************************************************\n");
     printf("***Pradiniai duomenys***\n");
-    printf("%10s %10s %10s %10s %10s\n", "Gijos nr.", "Eil.Nr.", "String", "int", "double");
     struct ThreadData duomenys_gijoms[MAX_THREADS];
     for (ii = 0; ii < MAX_THREADS; ii++){
-        printf("***Gija nr. %d***\n", ii);
+        printf("***Gija nr. %d***\n", ii + 1);
+        printf("%10s %10s %10s %10s\n", "Eil.Nr.", "String", "int", "double");
         struct Data D_gija[array_size[ii]];
         for (j = 0; j < array_size[ii]; j++){
             D_gija[j] = duomenys[d];
-            printf("%10d %10d %10s %10d %10lf\n", ii, j, D_gija[j].text_var, D_gija[j].int_var, D_gija[j].double_var);
+            printf("%10d %10s %10d %10lf\n", j + 1, D_gija[j].text_var, D_gija[j].int_var, D_gija[j].double_var);
             d++;
 
         }
@@ -96,14 +97,14 @@ main(int argc, char **argv) {
         gijosNr = omp_get_thread_num();
         int j = 0;
         for (j = 0; j < array_size[gijosNr]; j++){
-            printf("%10d %10d %10s %10d %10lf\n", gijosNr, j, duomenys_gijoms[gijosNr].thread_struct_array[j].text_var, duomenys_gijoms[gijosNr].thread_struct_array[j].int_var, duomenys_gijoms[gijosNr].thread_struct_array[j].double_var);
+            printf("%10s%d %10d %10s %10d %10lf\n","Procesas", gijosNr + 1, j + 1, duomenys_gijoms[gijosNr].thread_struct_array[j].text_var, duomenys_gijoms[gijosNr].thread_struct_array[j].int_var, duomenys_gijoms[gijosNr].thread_struct_array[j].double_var);
             int ii = 0;
             //funkcija, reikalinga pristabdyti giju veikima ir pastebeti maisos rezultatus
-            for (ii = 0; ii < 10000; ii++){
-                double bandomasis = ii * ii * ii * ii;
+            for (ii = 0; ii < 1000000; ii++){
+                double bandomasis = ii * ii * ii * ii * ii * ii * ii * ii;
             }
         }
-        printf("***Gija nr. %d baige darba \n", gijosNr);
+        printf("***Gija nr. %d baige darba \n", gijosNr + 1);
     }
     // ------ Nuoseklus kodas --------------
     printf("-------------------------------\n");
