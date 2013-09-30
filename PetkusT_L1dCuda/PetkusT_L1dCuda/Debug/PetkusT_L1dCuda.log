@@ -1,51 +1,32 @@
-﻿Build started 9/30/2013 3:46:38 PM.
-     1>Project "C:\Users\petku_000\Documents\Visual Studio 2012\Projects\PetkusT_L1dCuda\PetkusT_L1dCuda\PetkusT_L1dCuda.vcxproj" on node 2 (Build target(s)).
+﻿Build started 10/1/2013 12:13:01 AM.
+     1>Project "C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\PetkusT_L1dCuda\PetkusT_L1dCuda.vcxproj" on node 2 (Build target(s)).
      1>AddCudaCompileDeps:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\cl.exe /E /nologo /showIncludes /TP /D__CUDACC__ /DWIN32 /D_DEBUG /D_CONSOLE /D_MBCS /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" /I. /FIcuda_runtime.h /c "C:\Users\petku_000\Documents\Visual Studio 2012\Projects\PetkusT_L1dCuda\PetkusT_L1dCuda\kernel.cu" 
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\cl.exe /E /nologo /showIncludes /TP /D__CUDACC__ /DWIN32 /D_DEBUG /D_CONSOLE /D_MBCS /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" /I. /FIcuda_runtime.h /c C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\PetkusT_L1dCuda\kernel.cu 
        CudaBuild:
          Compiling CUDA source file kernel.cu...
-         cmd.exe /C "C:\Users\petku_000\AppData\Local\Temp\tmpbb3923c6d30540c38e14aad432ff272a.cmd"
-         "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "C:\Users\petku_000\Documents\Visual Studio 2012\Projects\PetkusT_L1dCuda\PetkusT_L1dCuda\kernel.cu"
+         cmd.exe /C "C:\Users\petku_000\AppData\Local\Temp\tmp9f83560c1afa4850aafee788d86bae1e.cmd"
+         "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\PetkusT_L1dCuda\kernel.cu"
          
-         C:\Users\petku_000\Documents\Visual Studio 2012\Projects\PetkusT_L1dCuda\PetkusT_L1dCuda>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "C:\Users\petku_000\Documents\Visual Studio 2012\Projects\PetkusT_L1dCuda\PetkusT_L1dCuda\kernel.cu" 
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(43): warning : variable "array_size" was declared but never referenced
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(44): warning : variable "duomenys" was declared but never referenced
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(64): error : this declaration has no storage class or type specifier
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(64): error : expected a ";"
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(112): error : expected a declaration
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(118): warning : parsing restarts here after previous syntax error
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(122): error : this declaration has no storage class or type specifier
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(122): error : variable "cudaStatus" has already been defined
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(124): error : expected a declaration
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(129): warning : parsing restarts here after previous syntax error
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(130): error : expected a declaration
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(160): warning : parsing restarts here after previous syntax error
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(161): error : expected a declaration
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(167): warning : parsing restarts here after previous syntax error
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(168): error : expected a declaration
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(173): warning : parsing restarts here after previous syntax error
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(174): error : expected a declaration
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(180): warning : parsing restarts here after previous syntax error
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(183): error : this declaration has no storage class or type specifier
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(183): error : variable "cudaStatus" has already been defined
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(184): error : expected a declaration
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(191): warning : parsing restarts here after previous syntax error
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(192): error : expected a declaration
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(198): warning : parsing restarts here after previous syntax error
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(199): error : expected a declaration
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(205): warning : parsing restarts here after previous syntax error
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(206): error : this declaration has no storage class or type specifier
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(206): error : declaration is incompatible with "cudaError_t cudaFree(void *)"
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(206): error : identifier "dev_a" is undefined
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(207): error : this declaration has no storage class or type specifier
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(207): error : variable "cudaFree" has already been defined
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(207): error : identifier "dev_b" is undefined
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(209): error : expected a declaration
-     1>C:/Users/petku_000/Documents/Visual Studio 2012/Projects/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(210): error : expected a declaration
+         C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\PetkusT_L1dCuda>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\PetkusT_L1dCuda\kernel.cu" 
+     1>C:/Users/petku_000/Documents/Darbas/KTU-lygiagretusis_programavimas/KTU-lygiagretusis_programavimas/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(54): warning : variable "bandomasis" was declared but never referenced
      1>c:\program files\nvidia gpu computing toolkit\cuda\v5.5\include\device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (1257). Save the file in Unicode format to prevent data loss
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\BuildCustomizations\CUDA 5.5.targets(592,9): error MSB3721: The command ""C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "C:\Users\petku_000\Documents\Visual Studio 2012\Projects\PetkusT_L1dCuda\PetkusT_L1dCuda\kernel.cu"" exited with code 2.
-     1>Done Building Project "C:\Users\petku_000\Documents\Visual Studio 2012\Projects\PetkusT_L1dCuda\PetkusT_L1dCuda\PetkusT_L1dCuda.vcxproj" (Build target(s)) -- FAILED.
+     1>c:\program files\nvidia gpu computing toolkit\cuda\v5.5\include\device_functions_decls.h : warning C4819: The file contains a character that cannot be represented in the current code page (1257). Save the file in Unicode format to prevent data loss
+     1>c:\program files\nvidia gpu computing toolkit\cuda\v5.5\include\device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (1257). Save the file in Unicode format to prevent data loss
+     1>C:/Users/petku_000/Documents/Darbas/KTU-lygiagretusis_programavimas/KTU-lygiagretusis_programavimas/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(54): warning : variable "bandomasis" was declared but never referenced
+     1>c:\program files\nvidia gpu computing toolkit\cuda\v5.5\include\device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (1257). Save the file in Unicode format to prevent data loss
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\Debug\PetkusT_L1dCuda.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\Win32" cudart.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\Debug\PetkusT_L1dCuda.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\Debug\PetkusT_L1dCuda.lib" /MACHINE:X86 Debug\kernel.cu.obj
+         PetkusT_L1dCuda.vcxproj -> C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\Debug\PetkusT_L1dCuda.exe
+       PostBuildEvent:
+         echo copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart*.dll" "C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\Debug\"
+         copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart*.dll" "C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\Debug\"
+         :VCEnd
+         copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart*.dll" "C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\Debug\"
+         C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart32_55.dll
+         C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart64_55.dll
+                 2 file(s) copied.
+     1>Done Building Project "C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\PetkusT_L1dCuda\PetkusT_L1dCuda.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:02.51
+Time Elapsed 00:00:06.76
