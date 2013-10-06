@@ -4,7 +4,9 @@
 //Dabartiniai nustatymai: giju sk: 8, maximalus masyvo dydis - 10, didziausias char buferio dydis - 80
 //Kiek  iteracijų iš eilės padaro vienas procesas? atsitiktinai
 //Kokia tvarka vykdomi procesai? atsitiktine
-//
+//Trumpiausias laikas - L1d CUDA
+//Kompiuteris: 4 branduolių CPU,  2.30GHz, OA - 3954460 kB, OS - Ubuntu 12.0 (CUDA buvo daromas Windows platformoje)
+// GPU - Nvidia GT 525m
 
 #include <mpi.h>
 #include <stdio.h>
@@ -41,9 +43,6 @@ int main(int argc, char *argv[])
     MPI_Comm_size(MPI_COMM_WORLD, &numprocessors);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Get_processor_name(processor_name, &namelen);
-    if (rank == 0){
-        printf("%10s %10s %10s %10s %10s\n", "Gijos nr.", "Eil.Nr.", "String", "int", "double");
-    }
     struct Data duomenys[MAX_FILE_ROW];
 
     //Nuskaitomo failo paruosimas
@@ -76,11 +75,22 @@ int main(int argc, char *argv[])
     int d = 0;
     int ii = 0;
     int j = 0;
+    if (rank == 0){
+        printf("********************************************************************\n");
+        printf("***Pradiniai duomenys***\n");
+    }
     struct ThreadData duomenys_gijoms;
-    for (ii = 0; ii < MAX_THREADS; ii++){
+    for (ii = 0; ii < numprocessors; ii++){
+        if (rank == 0){
+            printf("***Gija nr. %d***\n", ii + 1);
+            printf("%10s %10s %10s %10s\n", "Eil.Nr.", "String", "int", "double");
+        }
         struct Data D_gija[array_size[ii]];
         for (j = 0; j < array_size[ii]; j++){
             D_gija[j] = duomenys[d];
+            if (rank == 0){
+                printf("%10d %10s %10d %10lf\n", j + 1, D_gija[j].text_var, D_gija[j].int_var, D_gija[j].double_var);
+            }
             d++;
         }
         for (j = 0; j < array_size[ii]; j++){
@@ -89,8 +99,17 @@ int main(int argc, char *argv[])
             }
         }
     }
+    if (rank == 0){
+        printf("\n**********************\n");
+        printf("---------------------------------------------------------------------------------\n");
+        printf("***Lygiagrecioji programos dalis***\n");
+        printf("%10s %10s %10s %10s %10s\n", "Gijos nr.", "Eil.Nr.", "String", "int", "double");
+    }
     //Lygiagretusis spausdinimas
-
+    int iiii;
+    for (iiii = 0; ii < 10000000; ii++){
+            double bandomasis = ii * ii * ii * ii * ii * ii * ii * ii;
+    }
     int jj;
     for (jj = 0; jj < array_size[rank]; jj++){
         printf("%10s%d %10d-Nr %10s %10d %10lf\n","Procesas", rank + 1, jj + 1, duomenys_gijoms.thread_struct_array[jj].text_var, duomenys_gijoms.thread_struct_array[jj].int_var, duomenys_gijoms.thread_struct_array[jj].double_var);
