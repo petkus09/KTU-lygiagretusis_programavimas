@@ -100,9 +100,7 @@ main(int argc, char **argv) {
             printf("%10s%d %10d %10s %10d %10lf\n","Procesas", gijosNr + 1, j + 1, duomenys_gijoms[gijosNr].thread_struct_array[j].text_var, duomenys_gijoms[gijosNr].thread_struct_array[j].int_var, duomenys_gijoms[gijosNr].thread_struct_array[j].double_var);
             int ii = 0;
             //funkcija, reikalinga pristabdyti giju veikima ir pastebeti maisos rezultatus
-            for (ii = 0; ii < 1000000; ii++){
-                double bandomasis = ii * ii * ii * ii * ii * ii * ii * ii;
-            }
+
         }
         printf("***Gija nr. %d baige darba \n", gijosNr + 1);
     }
