@@ -1,18 +1,18 @@
-﻿Build started 10/1/2013 12:13:01 AM.
+﻿Build started 10/1/2013 11:17:04 AM.
      1>Project "C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\PetkusT_L1dCuda\PetkusT_L1dCuda.vcxproj" on node 2 (Build target(s)).
      1>AddCudaCompileDeps:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\cl.exe /E /nologo /showIncludes /TP /D__CUDACC__ /DWIN32 /D_DEBUG /D_CONSOLE /D_MBCS /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" /I. /FIcuda_runtime.h /c C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\PetkusT_L1dCuda\kernel.cu 
        CudaBuild:
          Compiling CUDA source file kernel.cu...
-         cmd.exe /C "C:\Users\petku_000\AppData\Local\Temp\tmp9f83560c1afa4850aafee788d86bae1e.cmd"
+         cmd.exe /C "C:\Users\petku_000\AppData\Local\Temp\tmpf10e1c21bcd949a58f58d95e57fb9866.cmd"
          "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\PetkusT_L1dCuda\kernel.cu"
          
          C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\PetkusT_L1dCuda>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\PetkusT_L1dCuda\kernel.cu" 
-     1>C:/Users/petku_000/Documents/Darbas/KTU-lygiagretusis_programavimas/KTU-lygiagretusis_programavimas/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(54): warning : variable "bandomasis" was declared but never referenced
+     1>C:/Users/petku_000/Documents/Darbas/KTU-lygiagretusis_programavimas/KTU-lygiagretusis_programavimas/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(50): warning : variable "ii" was declared but never referenced
      1>c:\program files\nvidia gpu computing toolkit\cuda\v5.5\include\device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (1257). Save the file in Unicode format to prevent data loss
      1>c:\program files\nvidia gpu computing toolkit\cuda\v5.5\include\device_functions_decls.h : warning C4819: The file contains a character that cannot be represented in the current code page (1257). Save the file in Unicode format to prevent data loss
      1>c:\program files\nvidia gpu computing toolkit\cuda\v5.5\include\device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (1257). Save the file in Unicode format to prevent data loss
-     1>C:/Users/petku_000/Documents/Darbas/KTU-lygiagretusis_programavimas/KTU-lygiagretusis_programavimas/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(54): warning : variable "bandomasis" was declared but never referenced
+     1>C:/Users/petku_000/Documents/Darbas/KTU-lygiagretusis_programavimas/KTU-lygiagretusis_programavimas/PetkusT_L1dCuda/PetkusT_L1dCuda/kernel.cu(50): warning : variable "ii" was declared but never referenced
      1>c:\program files\nvidia gpu computing toolkit\cuda\v5.5\include\device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (1257). Save the file in Unicode format to prevent data loss
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\Debug\PetkusT_L1dCuda.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\Win32" cudart.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\Debug\PetkusT_L1dCuda.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L1dCuda\Debug\PetkusT_L1dCuda.lib" /MACHINE:X86 Debug\kernel.cu.obj
@@ -29,4 +29,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:06.76
+Time Elapsed 00:00:06.80
