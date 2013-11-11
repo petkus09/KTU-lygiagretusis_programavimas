@@ -1,5 +1,5 @@
 /* Kure Tautvydas Petkus IFF-1
- * L1 - Gijos java kalboje
+ * L12- Java Semaforai
  * Duomenu failas - PetkusT.txt (duomenu eiluciu skaicius - 50)
  * Giju ir masyvu dydziai priklauso nuo ivedimo
  */
@@ -139,6 +139,7 @@ class PetkusT_L1a_Veiksmai {
         }
     }
 }
+//Duomenu klase
 class PetkusT_L1a_Duomenys {
     private String string_field;
     private int int_field;
@@ -173,6 +174,7 @@ class PetkusT_L1a_Duomenys {
         this.double_field = double_field;
     }
 }
+//Siuntejo gija
 class Writer extends Thread {
     private PetkusT_L1a_Duomenys[] file_data;
     private int kiekis;
@@ -191,7 +193,7 @@ class Writer extends Thread {
         }
     }
 }
-
+//gavejo gija
 class Reader extends Thread {
     private int[] initial_data;
     private int[] file_data;
@@ -226,6 +228,7 @@ class Reader extends Thread {
         }
     }
 }
+//Buferio klase
 class Buffer{
     private int[] file_data;
     private int[] data_count;
@@ -260,6 +263,7 @@ class Buffer{
     public void setData_count(int i, int data_count) {
         this.data_count[i] = data_count;
     }
+    //duomenu idėjas
     public void add_data(int data){
         try {
             //laisva.acquire();
@@ -273,6 +277,7 @@ class Buffer{
             //užimta.release();
         } catch (InterruptedException e) { }
     }
+    //duomenu isemimas
     public int read_data(int data){
         int read_data = -1;
         try {
