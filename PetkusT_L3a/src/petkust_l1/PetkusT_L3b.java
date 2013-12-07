@@ -43,11 +43,15 @@ class PetkusT_L3b_Veiksmai {
         Writer[] write = new Writer[process_count];
         Reader[] read = new Reader[process_count];
         Buffer buffer = new Buffer();
-        One2OneChannel[] channels = new One2OneChannel[process_count*2];
-        One2OneChannel[] replyChannels = new One2OneChannel[process_count*2];
-        for (int i = 0; i < process_count*2; i++) {
-            channels[i] = Channel.one2one();
-            replyChannels[i] = Channel.one2one();
+        //One2OneChannel[] channels = new One2OneChannel[process_count*2];
+        //One2OneChannel[] replyChannels = new One2OneChannel[process_count*2];
+        Any2OneChannel writerChannel = Channel.any2one();
+        Any2OneChannel readerChannel = Channel.any2one();
+        One2OneChannel[] writerReplyChannels = new One2OneChannel[process_count];
+        One2OneChannel[] readerReplyChannels = new One2OneChannel[process_count];
+        for (int i = 0; i < process_count; i++) {
+            writerReplyChannels[i] = Channel.one2one();
+            readerReplyChannels[i] = Channel.one2one();
         }
         Parallel parallelProcesses = new Parallel();
         readData(file_name, file_data, process_count, array_size);
@@ -76,16 +80,15 @@ class PetkusT_L3b_Veiksmai {
         System.out.println("-------------------PRADEDAMOS GIJOS--------------------");
         //Sukuriamos gijos
         for (int i = 0; i < process_count; i++) {
-            Writer thread = new Writer(array_size[i], file_data[i], channels[i].out(), replyChannels[i].in());
+            Writer thread = new Writer(array_size[i], file_data[i], writerChannel.out(), writerReplyChannels[i].in(), i);
             parallelProcesses.addProcess(thread);
         }
         for (int i = 0; i < process_count; i++){
-            Reader thread = new Reader(initial_data[i], array_size[i], channels[i + process_count].out(),
-                    replyChannels[i + process_count].in());
+            Reader thread = new Reader(initial_data[i], array_size[i],readerChannel.out(), readerReplyChannels[i].in(), i);
             parallelProcesses.addProcess(thread);
         }
         //Paleidžiamos gijos
-        ProcessManager manager = new ProcessManager(channels, replyChannels, buffer, process_count);
+        ProcessManager manager = new ProcessManager(writerChannel, readerChannel, writerReplyChannels, readerReplyChannels, buffer, process_count);
         parallelProcesses.addProcess(manager);
         parallelProcesses.run();
     }
@@ -94,12 +97,10 @@ class PetkusT_L3b_Veiksmai {
         try {
             BufferedReader in = new BufferedReader(new FileReader(file_name));
             String str;
-            String line = null;
             String var1;
             int var2;
             double var3;
             in.readLine();
-            //while ((str = in.readLine()) != null){
             for (int i = 0; i < process_count; i++) {
                 file_data[i] = new PetkusT_L3b_Duomenys[array_size[i]];
                 for (int j = 0; j < array_size[i]; j++) {
@@ -188,8 +189,9 @@ class Writer implements CSProcess {
     private int kiekis;
     private ChannelInput replyChannel;
     private ChannelOutput channel;
+    private int number;
     
-    public Writer(int kiek, PetkusT_L3b_Duomenys[] data, ChannelOutput channel, ChannelInput replyChannel) {
+    public Writer(int kiek, PetkusT_L3b_Duomenys[] data, ChannelOutput channel, ChannelInput replyChannel, int index) {
         this.kiekis = kiek + 1;
         file_data= new PetkusT_L3b_Duomenys[kiek+1];
         for (int i = 0; i < kiek; i++){
@@ -199,12 +201,13 @@ class Writer implements CSProcess {
         file_data[kiek].setInt_field(-1);
         this.channel = channel;
         this.replyChannel = replyChannel;
+        this.number = index;
     }
     public void run() {
         for (int i = 0; i<kiekis; i++) {
             int response = -1;
             while (response == -1) {
-                this.channel.write(file_data[i].getInt_field());
+                this.channel.write(new MSG(file_data[i].getInt_field(), number));
                 response = (int) replyChannel.read();
             }
             if (response == 0) {
@@ -223,7 +226,8 @@ class Reader implements CSProcess {
     private int dom_kiekis;
     private ChannelOutput channel;
     private ChannelInput replyChannel;
-    public Reader(int[] in_data, int kiekis, ChannelOutput channel, ChannelInput replyChannel) {
+    private int number;
+    public Reader(int[] in_data, int kiekis, ChannelOutput channel, ChannelInput replyChannel, int index) {
         this.dom_kiekis = 0;
         file_data= new Dom[10];
         for (int i = 0; i < 10; i++){
@@ -237,14 +241,15 @@ class Reader implements CSProcess {
         this.initial_kiekis = kiekis+1;
         this.channel = channel;
         this.replyChannel = replyChannel;
+        this.number = index;
     }
     public void run() {
         for (int i = 0; i < initial_kiekis; i++){
             int response = -1;
             while (response == -1) {
-                this.channel.write(initial_data[i]);
+                this.channel.write(new MSG(initial_data[i], number));
                 response = (int) this.replyChannel.read();
-                
+                //System.out.println(response);
             }
         }
         System.out.println("Reader finished");
@@ -339,8 +344,8 @@ class Buffer{
 
 class ProcessManager implements CSProcess {
 
-    private AltingChannelInput[] readerInputs;
-    private AltingChannelInput[] writerInputs;
+    private AltingChannelInput readerInput;
+    private AltingChannelInput writerInput;
     private Buffer buffer;
     private ChannelOutput[] readerReplyOutputs;
     private ChannelOutput[] writerReplyOutputs;
@@ -348,18 +353,16 @@ class ProcessManager implements CSProcess {
     private boolean[] killedThreads;
     private int process_count;
 
-    ProcessManager(One2OneChannel[] channels, One2OneChannel[] replyChannels, Buffer buffer, int process_count) {
-        writerInputs = new AltingChannelInput[process_count];
+    ProcessManager(Any2OneChannel writerChannel, Any2OneChannel readerChannel, One2OneChannel[] writerReplyChannels, One2OneChannel[] readerReplyChannels, Buffer buffer, int process_count) {
+        writerInput = writerChannel.in();
         writerReplyOutputs = new ChannelOutput[process_count];
         for (int i = 0; i < process_count; i++) {
-            writerInputs[i] = channels[i].in();
-            writerReplyOutputs[i] = replyChannels[i].out();
+            writerReplyOutputs[i] = writerReplyChannels[i].out();
         }
-        readerInputs = new AltingChannelInput[process_count];
+        readerInput = readerChannel.in();
         readerReplyOutputs = new ChannelOutput[process_count];
         for (int i = 0; i < process_count; i++) {
-            readerInputs[i] = channels[i + process_count].in();
-            readerReplyOutputs[i] = replyChannels[i + process_count].out();
+            readerReplyOutputs[i] = readerReplyChannels[i].out();
         }
         this.buffer = buffer;
         this.statusBuffer = new boolean[process_count*2];
@@ -375,23 +378,43 @@ class ProcessManager implements CSProcess {
         Alternative alternative = createGuards();
         while (!isKilled()) {
             boolean[] alive = isAlive();
-            int choice = alternative.fairSelect(alive);
-            if (choice >= process_count) {
-                reader(choice);
+            int choice = alternative.fairSelect(new boolean[] {aliveWriters(alive), aliveReaders(alive)});
+            if (choice == 1) {
+                reader();
             } else {
-                writer(choice);
+                writer();
             }
         }
         System.out.println(buffer.toString());
     }
     
-    private void writer(int index) {
+    private boolean aliveReaders(boolean[] writers){
+        for (int i = process_count; i < process_count*2; i++){
+            if (writers[i]){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private boolean aliveWriters(boolean[] writers){
+        for (int i = 0; i < process_count; i++){
+            if (writers[i]){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private void writer() {
         //responses:    0- you must quit
         //              1- suceess
         //              -1- no success, try again
-        ChannelInput inputChannel = writerInputs[index];
+        ChannelInput inputChannel = writerInput;
+        MSG message = (MSG) inputChannel.read();
+        int var = message.getIntField();
+        int index = message.getNumber();
         ChannelOutput channel = writerReplyOutputs[index];
-        int var = (int) inputChannel.read();
         if (var == -1) {
             //process has finished it's job
             statusBuffer[index] = false;
@@ -413,37 +436,31 @@ class ProcessManager implements CSProcess {
         }
     }
     
-    private void reader(int index) {
-        ChannelInput inputChannel = readerInputs[index - process_count];
-        ChannelOutput channel = readerReplyOutputs[index - process_count];
-        int var = (int) inputChannel.read();
+    private void reader() {
+        ChannelInput inputChannel = this.readerInput;
+        MSG message = (MSG) inputChannel.read();
+        int var = message.getIntField();
+        int index = message.getNumber();
+        ChannelOutput channel = readerReplyOutputs[index];
         int success = getInt(var);
-        //System.out.println(String.format("%4d%4d\n", var, success));
         if (success != -1){
-            statusBuffer[index] = true;
+            statusBuffer[index + process_count] = true;
         }
         else{
-            statusBuffer[index] = false;
+            statusBuffer[index + process_count] = false;
         }
         if (isStop()) {
             stopMSG(channel, success);
-            killedThreads[index] = true;
+            killedThreads[index + process_count] = true;
         } else {
             continueMSG(channel, success);
         }
     }
     
     private Alternative createGuards() {
-        Guard guards[] = new Guard[process_count * 2];
-        int i = 0;
-        for (AltingChannelInput input : writerInputs) {
-            guards[i] = input;
-            i++;
-        }
-        for (AltingChannelInput input : readerInputs) {
-            guards[i] = input;
-            i++;
-        }
+        Guard guards[] = new Guard[2];
+        guards[0] = this.writerInput;
+        guards[1] = this.readerInput;
         Alternative alternative = new Alternative(guards);
         return alternative;
     }
@@ -504,5 +521,23 @@ class ProcessManager implements CSProcess {
 
     private void successMSG(ChannelOutput channel) {
         channel.write(1);
+    }
+}
+
+class MSG{
+    private int int_field;
+    private int number;
+
+    public int getIntField() {
+        return int_field;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public MSG(int int_field, int number) {
+        this.int_field = int_field;
+        this.number = number;
     }
 }
