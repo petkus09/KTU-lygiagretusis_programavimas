@@ -1,8 +1,60 @@
-﻿  Compiling CUDA source file kernel.cu...
+﻿  Compiling CUDA source file PetkusT_L4b.cu...
   
-  C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L4b\PetkusT_L4a>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_10,code=\"sm_10,compute_10\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L4b\PetkusT_L4a\kernel.cu" 
+  C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L4b\PetkusT_L4a>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_10,code=\"sm_10,compute_10\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\PetkusT_L4b.cu.obj "C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L4b\PetkusT_L4a\PetkusT_L4b.cu" 
 c:\program files\nvidia gpu computing toolkit\cuda\v5.5\include\device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (1257). Save the file in Unicode format to prevent data loss
 c:\program files\nvidia gpu computing toolkit\cuda\v5.5\include\device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (1257). Save the file in Unicode format to prevent data loss
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/detail/internal_functional.h(233): warning : Cannot tell what pointer points to, assuming global memory space
 c:\program files\nvidia gpu computing toolkit\cuda\v5.5\include\device_functions.h : warning C4819: The file contains a character that cannot be represented in the current code page (1257). Save the file in Unicode format to prevent data loss
   PetkusT_L4a.vcxproj -> C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L4b\Debug\PetkusT_L4b.exe
   copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart*.dll" "C:\Users\petku_000\Documents\Darbas\KTU-lygiagretusis_programavimas\KTU-lygiagretusis_programavimas\PetkusT_L4b\Debug\"
