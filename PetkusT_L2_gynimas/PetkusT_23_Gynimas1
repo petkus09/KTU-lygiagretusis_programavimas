@@ -1,0 +1,12 @@
+#include <omp.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+#define MAX_PROCESS_COUNT 2
+
+main(int argc, char **argv) {
+    int c = 10;
+    int d = 100;
+}

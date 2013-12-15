@@ -5,8 +5,10 @@
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
-const int MAX_ROW = 50;	   //MAX 108
-const int MAX_COL = 50;	   //MAX 330
+#include <time.h>
+const int MAX_ROW = 200;	   //MAX 108
+const int MAX_COL = 200;	   //MAX 330
+const int counter_hit = 100;
 
 void evolution(int (*pop)[MAX_COL], int generation);
 void evolution_paralell(int (*pop)[MAX_COL]);
@@ -42,33 +44,44 @@ int main(int argc, char **argv)
 	ch = getchar();
 	printf("Press any key to continue...");
 	getchar(); getchar();
+	int counter = 0;
+	clock_t begin, end;
+	double time_spent;
+	begin = clock();
 	i = 0;
 	if (ch == '1')
 	{
-		while (i == 0)
+		while (counter < counter_hit)
 		{
 			evolution(population, generation);
 			generation += 1;
+			counter++;
 		}
 	}
 	else if (ch == '2')
 	{
-	    while (i == 0)
+	    while (counter < counter_hit)
 		{
             evolution_paralell(population);
             generation += 1;
             print(population, generation);
+            counter++;
 		}
 	}
 	else if (ch == '3')
 	{
-	    while (i == 0)
+	    while (counter < counter_hit)
 	    {
 	        evolution_paralell_chaos(population);
             generation += 100;
             print(population, generation);
+            counter+=100;
 	    }
 	}
+	end = clock();
+	time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+	printf("\n%f\n", time_spent);
+	getchar();
 	return 0;
 }
 
