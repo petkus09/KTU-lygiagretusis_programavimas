@@ -15,10 +15,12 @@
 #include <sstream>	
 #include <thrust/host_vector.h>
 #include <thrust/device_vector.h>
+#include <time.h>
 
 using namespace std;
-const int MAX_ROW = 100;	   //MAX 108
-const int MAX_COL = 100;	   //MAX 330
+const int MAX_ROW = 500;	   //MAX 108
+const int MAX_COL = 500;	   //MAX 330
+const int counter_hit = 100;
 
 struct bool_data{
 	bool data[MAX_COL];
@@ -104,27 +106,18 @@ __device__ void print_paralell(bool_data *pop)
 	//printf("%s\n", row);
 }
 
-__global__ void startEvolution(bool_data *p, bool_data *new_p){
+__global__ void startEvolution(bool_data *p, bool_data *new_p){                 //1 iteracija
 	int row = blockIdx.x;
 	int col = threadIdx.x;
 	new_p[row].data[col] = generation_pass_paralell(p, row, col);
 }
 
-__global__ void startEvolutionCHAOS(bool_data *p){
+__global__ void startEvolutionCHAOS(bool_data *p, bool_data *new_p){              //100 iteraciju
 	int row = blockIdx.x;
 	int col = threadIdx.x;
-	if (row != MAX_ROW)
+	for (int i = 0; i < 100; i++)
 	{
-		while (true){
-			p[row].data[col] = generation_pass_paralell(p, row, col);
-		}
-	}
-	else if (row != MAX_ROW && col == 0)
-	{
-		while (true)
-		{
-			print_paralell(p);
-		}
+		new_p[row].data[col] = generation_pass_paralell(p, row, col);
 	}
 }
 
@@ -183,19 +176,24 @@ int main()
 	ch = fgetchar(); ch = fgetchar();
 	printf("Press any key to continue...");
 	getchar(); getchar();
+	int counter = 0;
+	clock_t begin, end;
+	double time_spent;
+	begin = clock();
 	if (ch == '1')
 	{
-		while (true)
+		while (counter < counter_hit)
 		{
-			evolution(population, generation);
+			evolution(population, generation);	//Nuosekliai
 			generation += 1;
+			counter += 1;
 		}
 	}
 	else if (ch == '2' || ch == '3')
 	{
-		while (true)
+		while (counter < counter_hit)
 		{
-			cudaError_t cudaStatus = cudaEvolution(population, generation, ch);
+			cudaError_t cudaStatus = cudaEvolution(population, generation, ch);	//Ivykdome funkcija, kurioje algoritmas bus atliekamas lygiagreciai
 			if (cudaStatus != cudaSuccess) {
 				fprintf(stderr, "cudaEvolution failed!");
 				fgetchar();
@@ -207,8 +205,20 @@ int main()
 				return 1;
 			}
 			generation += 1;
+			if (ch == '2')
+			{
+				counter += 1;
+			}
+			else if (ch == '3')
+			{
+				counter += 100;
+			}
 		}
 	}
+	end = clock();
+	time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+	printf("\n%f\n", time_spent);
+	getchar();
 	return 0;
 }
 
@@ -320,19 +330,19 @@ cudaError_t cudaEvolution(bool (*pop)[MAX_COL], int generation, char mode)
 		goto Error;
 	}
 
-	cudaStatus = cudaMalloc((void**)&dev_p, MAX_ROW *  sizeof(bool_data));
+	cudaStatus = cudaMalloc((void**)&dev_p, MAX_ROW *  sizeof(bool_data));	//skiriame atminti tiek pradinei matricai
 	if (cudaStatus != cudaSuccess) {
 		fprintf(stderr, "cudaMalloc failed!");
 		goto Error;
 	}
 
-	cudaStatus = cudaMalloc((void**)&dev_new_p, MAX_ROW *  sizeof(bool_data));
+	cudaStatus = cudaMalloc((void**)&dev_new_p, MAX_ROW *  sizeof(bool_data));	//tiek naujai matricai
 	if (cudaStatus != cudaSuccess) {
 		fprintf(stderr, "cudaMalloc failed!");
 		goto Error;
 	}
 
-	cudaStatus = cudaMemcpy(dev_p, p, MAX_ROW *  sizeof(bool_data), cudaMemcpyHostToDevice);
+	cudaStatus = cudaMemcpy(dev_p, p, MAX_ROW *  sizeof(bool_data), cudaMemcpyHostToDevice);	//perduodam duomenis	
 	if (cudaStatus != cudaSuccess) {
 		fprintf(stderr, "cudaMemcpy failed!");
 		goto Error;
@@ -346,11 +356,11 @@ cudaError_t cudaEvolution(bool (*pop)[MAX_COL], int generation, char mode)
 
 	if (mode == '2')
 	{
-		startEvolution<<<MAX_ROW, MAX_COL>>>(dev_p, dev_new_p);
+		startEvolution<<<MAX_ROW, MAX_COL>>>(dev_p, dev_new_p);		//Ivykdom gijas
 	}
 	if (mode == '3')
 	{
-		startEvolutionCHAOS<<<MAX_ROW + 1, MAX_COL>>>(dev_p);
+		startEvolutionCHAOS<<<MAX_ROW + 1, MAX_COL>>>(dev_p, dev_new_p);
 	}
 
 
@@ -360,7 +370,7 @@ cudaError_t cudaEvolution(bool (*pop)[MAX_COL], int generation, char mode)
 		goto Error;
 	}
 
-	cudaStatus = cudaMemcpy(p, dev_p,   MAX_ROW *  sizeof(bool_data), cudaMemcpyDeviceToHost);
+	cudaStatus = cudaMemcpy(p, dev_p,   MAX_ROW *  sizeof(bool_data), cudaMemcpyDeviceToHost);		//Susigrazinam rezultatus
 	if (cudaStatus != cudaSuccess) {
 		fprintf(stderr, "cudaMemcpy failed!");
 		goto Error;
@@ -375,7 +385,7 @@ cudaError_t cudaEvolution(bool (*pop)[MAX_COL], int generation, char mode)
 	{
 		for (int j = 0; j < MAX_COL; j++)
 		{
-			pop[i][j] = new_p[i].data[j];
+			pop[i][j] = new_p[i].data[j];		//perrasom is naujo pradine matrica
 		}
 	}
 	print(pop, generation);
