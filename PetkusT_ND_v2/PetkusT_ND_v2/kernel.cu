@@ -18,8 +18,8 @@
 #include <time.h>
 
 using namespace std;
-const int MAX_ROW = 500;	   //MAX 108
-const int MAX_COL = 500;	   //MAX 330
+const int MAX_ROW = 108;	   //MAX 108
+const int MAX_COL = 330;	   //MAX 330
 const int counter_hit = 100;
 
 struct bool_data{
@@ -182,7 +182,8 @@ int main()
 	begin = clock();
 	if (ch == '1')
 	{
-		while (counter < counter_hit)
+		//while (counter < counter_hit)
+		while (true)
 		{
 			evolution(population, generation);	//Nuosekliai
 			generation += 1;
@@ -191,7 +192,8 @@ int main()
 	}
 	else if (ch == '2' || ch == '3')
 	{
-		while (counter < counter_hit)
+		//while (counter < counter_hit)
+		while (true)
 		{
 			cudaError_t cudaStatus = cudaEvolution(population, generation, ch);	//Ivykdome funkcija, kurioje algoritmas bus atliekamas lygiagreciai
 			if (cudaStatus != cudaSuccess) {
